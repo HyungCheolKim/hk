@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REACH FES Device — HyungCheol Kim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060e08; --bg2: #0c1610; --bg3: #111f15;
+    --border: rgba(74,140,90,0.15); --border-hover: rgba(74,140,90,0.35);
+    --text: #e8f0ea; --text2: #6d9978; --text3: #3d6647;
+    --accent: #4fc974; --radius: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.65; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px; background: rgba(6,14,8,0.9); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-back { color: var(--text2); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+  main { max-width: 780px; margin: 0 auto; padding: 160px 48px 120px; }
+  .proj-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 20px; }
+  .img-hero { width: 100%; aspect-ratio: unset; background: var(--bg2); border: 1px dashed var(--border-hover); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: transparent; font-size: 0; letter-spacing: 0; text-transform: uppercase; margin-bottom: 72px; overflow: hidden; }
+  .img-hero .ph-icon { display: none; }
+  .img-hero .ph-filename { display: none; }
+  .img-hero img { width: 100%; height: auto; object-fit: contain; display: block; }
+  .content-grid { display: flex; flex-direction: column; gap: 0; }
+  .content-body p { font-size: 16px; color: var(--text2); font-weight: 300; line-height: 1.8; margin-bottom: 24px; }
+  .content-body p strong { color: var(--text); font-weight: 500; }
+  .content-body h2 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 600; color: var(--text); margin: 52px 0 16px; letter-spacing: -0.01em; }
+  .img-inline { width: 100%; border-radius: var(--radius); background: var(--bg2); border: 1px dashed var(--border-hover); aspect-ratio: unset; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 32px 0; color: transparent; font-size: 0; letter-spacing: 0; overflow: hidden; }
+  .img-inline img { width: 100%; height: auto; object-fit: contain; display: block; }
+  .img-inline .ph-icon { display: none; }
+  .img-inline .ph-filename { display: none; }
+  .sidebar-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; flex: 1; min-width: 160px; margin-bottom: 0; }
+  .sidebar-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; }
+  .sidebar-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ptag { padding: 4px 10px; border: 1px solid var(--border); border-radius: 100px; font-size: 11px; color: var(--text3); }
+  .sidebar-val { font-size: 14px; color: var(--text2); font-weight: 300; line-height: 1.6; }
+  .ext-link {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); text-decoration: none; margin-top: 20px;
+    transition: border-color 0.2s;
+  }
+  .ext-link:hover { border-color: rgba(79,201,116,0.4); }
+  .ext-link-left .ext-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .ext-link-left .ext-title { font-size: 14px; color: var(--text); font-weight: 500; }
+  .ext-arrow { font-size: 18px; color: var(--accent); flex-shrink: 0; margin-left: 16px; }
+ display: inline-flex; align-items: center; gap: 8px; background: rgba(79,201,116,0.1); border: 1px solid rgba(79,201,116,0.25); border-radius: 100px; padding: 6px 14px; font-size: 12px; color: var(--accent); margin-bottom: 32px; }
+  code { background: rgba(79,201,116,0.08); padding: 1px 5px; border-radius: 3px; font-size: 12px; color: var(--accent); }
+  @media (max-width: 768px) { nav { padding: 16px 24px; } main { padding: 140px 24px 100px; } .content-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">HCK</a>
+  <a href="index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+<main>
+  <p class="proj-label">Project 02 Hardware Lead</p>
+  <h1>REACH FES Device</h1>
+  <div class="award-badge">★ Dean's Choice Award</div>
+
+  <div class="img-hero">
+    <img src="images/project-reach-hero.jpg" alt="REACH FES Device"
+      onerror="this.style.display='none';">
+    <span class="ph-icon">◧</span>
+    <span class="ph-filename">images/project-reach-hero.jpg</span>
+  </div>
+
+  <div class="content-grid">
+    <div class="content-body">
+      <p>
+        A wearable Functional Electrical Stimulation (FES) device for muscle rehabilitation, 
+        controlled by a custom-designed Raspberry Pi fixture and integrated with real-time EMG feedback.
+        Awarded the Dean's Choice Award through the REACH program.
+      </p>
+
+      <h2>Problem</h2>
+      <p>
+FES devices stimulate muscle contractions electrically to assist patients recovering from 
+        neurological conditions. The challenge was building a compact, controllable housing that 
+        could interface a Raspberry Pi with the FES electronics reliably.
+      </p>
+
+      <h2>Hardware Design</h2>
+      <p>
+        Designed and <strong>3D printed</strong> a custom fixture housing the Raspberry Pi, providing 
+        a secure, organized enclosure for all electronics. Led multiple design iterations to optimize 
+        fit, cable routing, and heat dissipation.
+      </p>
+
+      <div class="img-inline">
+        <img src="images/project-reach-housing.jpg" alt="Housing design" onerror="this.style.display='none';">
+        <span class="ph-icon">◧</span>
+        Housing / 3D print photo
+        <span class="ph-filename">images/project-reach-housing.jpg</span>
+      </div>
+
+      <h2>EMG Integration</h2>
+      <p>
+        Collaborated with a multidisciplinary team to integrate <strong>real-time EMG feedback</strong>, 
+        allowing the device to modulate stimulation intensity based on measured muscle activation 
+        improving both safety and rehabilitation outcomes.
+      </p>
+
+      <div class="img-inline">
+        <img src="images/project-reach-system.jpg" alt="Full system" onerror="this.style.display='none';">
+        <span class="ph-icon">◧</span>
+        Full system photo
+        <span class="ph-filename">images/project-reach-system.jpg</span>
+      </div>
+
+      <h2>Results</h2>
+      <p>
+        The device successfully demonstrated closed-loop FES control during the REACH showcase,
+        earning the <strong>Dean's Choice Award</strong> at the UCI Samueli School of Engineering.
+        The project was also published through eScholarship you can read the full paper below.
+      </p>
+
+      <a href="https://escholarship.org/uc/item/8x03c4s2" target="_blank" class="ext-link">
+        <div class="ext-link-left">
+          <div class="ext-label">Published paper</div>
+          <div class="ext-title">REACH FES Device eScholarship · UCI</div>
+        </div>
+        <span class="ext-arrow">↗</span>
+      </a>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-label">Tools</div>
+        <div class="sidebar-tags">
+          <span class="ptag">Raspberry Pi</span>
+          <span class="ptag">3D Printing</span>
+          <span class="ptag">EMG</span>
+          <span class="ptag">FES</span>
+          <span class="ptag">Rehabilitation</span>
+          <span class="ptag">Python</span>
+        </div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Timeline</div>
+        <div class="sidebar-val">September 2024 – June 2025</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Role</div>
+        <div class="sidebar-val">Hardware Lead</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Award</div>
+        <div class="sidebar-val">REACH Dean's Choice Award · UC Irvine</div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

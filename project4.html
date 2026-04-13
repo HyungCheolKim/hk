@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guidance Glasses — HyungCheol Kim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060e08; --bg2: #0c1610; --bg3: #111f15;
+    --border: rgba(74,140,90,0.15); --border-hover: rgba(74,140,90,0.35);
+    --text: #e8f0ea; --text2: #6d9978; --text3: #3d6647;
+    --accent: #4fc974; --radius: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.65; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(6,14,8,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--accent); text-decoration: none; }
+  .nav-back { color: var(--text2); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+  main { max-width: 780px; margin: 0 auto; padding: 160px 48px 120px; }
+  .proj-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 20px; }
+  .img-hero { width: 100%; aspect-ratio: unset; background: var(--bg2); border: 1px dashed var(--border-hover); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: transparent; font-size: 0; letter-spacing: 0; text-transform: uppercase; margin-bottom: 72px; overflow: hidden; }
+  .img-hero .ph-icon { display: none; }
+  .img-hero .ph-filename { display: none; }
+  .img-hero img { width: 100%; height: auto; object-fit: contain; display: block; }
+  .content-grid { display: flex; flex-direction: column; gap: 0; }
+  .content-body p { font-size: 16px; color: var(--text2); font-weight: 300; line-height: 1.8; margin-bottom: 24px; }
+  .content-body p strong { color: var(--text); font-weight: 500; }
+  .content-body h2 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 600; color: var(--text); margin: 36px 0 12px; }
+  .img-inline { width: 100%; border-radius: var(--radius); background: var(--bg2); border: 1px dashed var(--border-hover); aspect-ratio: unset; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 32px 0; color: transparent; font-size: 0; letter-spacing: 0; overflow: hidden; }
+  .img-inline img { width: 100%; height: auto; object-fit: contain; display: block; }
+  .img-inline .ph-icon { display: none; }
+  .img-inline .ph-filename { display: none; }
+  .iter-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 32px 0; }
+  .iter-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.04em; overflow: hidden; }
+  .iter-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .iter-box .iter-num { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--text3); }
+  .sidebar-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; flex: 1; min-width: 160px; margin-bottom: 0; }
+  .sidebar-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; }
+  .sidebar-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ptag { padding: 4px 10px; border: 1px solid var(--border); border-radius: 100px; font-size: 11px; color: var(--text3); }
+  .sidebar-val { font-size: 14px; color: var(--text2); font-weight: 300; line-height: 1.6; }
+  code { background: rgba(79,201,116,0.08); padding: 1px 5px; border-radius: 3px; font-size: 12px; color: var(--accent); }
+  @media (max-width: 768px) { nav { padding: 16px 24px; } main { padding: 140px 24px 100px; } .content-grid { grid-template-columns: 1fr; } .iter-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">HCK</a>
+  <a href="index.html" class="nav-back">← Back to portfolio</a>
+</nav>
+<main>
+  <p class="proj-label">Project 04 Hardware Lead</p>
+  <h1>Guidance Glasses</h1>
+
+  <div class="img-hero">
+    <img src="images/project-glasses-hero.jpg" alt="Guidance Glasses SolidWorks CAD" onerror="this.style.display='none';">
+    <span class="ph-icon">◧</span>
+    <span class="ph-filename">images/project-glasses-hero.jpg</span>
+  </div>
+
+  <div class="content-grid">
+    <div class="content-body">
+      <p>
+        Smart glasses designed to help visually impaired users safely navigate urban environments and cross intersections. 
+        The device integrates a camera, ultrasonic sensor, microphone, and haptic motors into a 
+        custom 3D printed wearable frame. I led the mechanical design of all housing components in SolidWorks.
+      </p>
+
+      <h2>Problem</h2>
+      <p>
+        Visually impaired pedestrians face significant hazards in urban environments. Traditional white canes 
+        can't detect objects outside immediate range, and existing smart glasses have high costs and can't 
+        measure distance. The goal was a compact, wearable device that communicates spatial information 
+        through haptic feedback while keeping the user's hands and remaining senses free.
+      </p>
+
+      <h2>Frame & temple design</h2>
+      <p>
+        Designed the full frame and temple assembly in <strong>SolidWorks</strong>, including the O-frame lens housing, 
+        left and right temple outer and inner pieces, and square end cap components. Each temple was 
+        designed to house a sensor module — the left temple integrates the camera, the right temple 
+        houses the ultrasonic sensor — with a haptic motor embedded in each temple tip.
+        Materials were <strong>PLA</strong> for the frame and <strong>ABS</strong> for the temples to balance 
+        rigidity and printability.
+      </p>
+
+      <div class="img-inline">
+        <img src="images/project-glasses-hero.jpg" alt="SolidWorks exploded view" onerror="this.style.display='none';">
+        <span class="ph-icon">◧</span>
+        <span class="ph-filename">images/project-glasses-hero.jpg</span>
+      </div>
+
+      <h2>Component integration</h2>
+      <p>
+        Each temple was designed around its embedded components — the left temple houses the camera module 
+        with a precision cutout and snap fit retention, while the right temple holds the ultrasonic sensor 
+        flush with the outer face. Haptic motors are recessed into the temple tips with wire routing channels 
+        molded directly into the inner pieces, keeping the assembly clean and manufacturable.
+      </p>
+
+      <h2>GD&T & technical drawings</h2>
+      <p>
+        Produced <strong>GD&T-compliant SolidWorks drawings</strong> for every component, including the 
+        O-Frame, left and right temple inner and outer pieces, square end cap, and Jetson Nano housing. 
+        Drawings used ASME Y14.5 tolerancing with all dimensions in inches. Parts were 3D printed through 
+        iterative prototyping, with minor fit corrections addressed between builds.
+      </p>
+
+      <div class="img-inline">
+        <img src="images/project-glasses-cad.jpg" alt="Physical prototype" onerror="this.style.display='none';">
+        <span class="ph-icon">◧</span>
+        <span class="ph-filename">images/project-glasses-cad.jpg</span>
+      </div>
+
+      <h2>Results</h2>
+      <p>
+        Successfully integrated all four sensor modalities into a balanced, wearable frame. 
+        The final prototype demonstrated closed-loop obstacle detection and crosswalk navigation 
+        using the full sensor suite, collaborating with five interdisciplinary engineers across 
+        hardware, software, and electrical systems.
+      </p>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-label">Tools</div>
+        <div class="sidebar-tags">
+          <span class="ptag">SolidWorks</span>
+          <span class="ptag">GD&T</span>
+          <span class="ptag">3D Printing</span>
+          <span class="ptag">PLA / ABS</span>
+          <span class="ptag">Haptics</span>
+          <span class="ptag">Ultrasonic</span>
+          <span class="ptag">Wearable</span>
+        </div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Timeline</div>
+        <div class="sidebar-val">March 2023 – June 2023</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Role</div>
+        <div class="sidebar-val">Hardware Lead</div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
